@@ -1,5 +1,6 @@
 // importtar módulo express
-import express, { request } from "express"
+import express from "express";
+import bruxos from "./src/data/bruxos.js";
 
 // defiir constante para porta do servidos
 const serverPort = 3000;
@@ -9,10 +10,16 @@ const app = express();
 app.use(express.json());
 // Criar rota GET "/" que retorna uma mensagem
 app.get("/" , (req, res) => {
-    res.send( `<h1>Hello world!</h1>`);
+    res.send( "<h1>Bem vindo ao mundo de Harry Potter!<h1>");
+});
+
+app.get("/bruxos", (req, res) => {
+    res.json(bruxos);
 });
 // Iniciar servidor escutando na porta definida e mostrar mensagem no console
 app.listen(serverPort, () => {
     console.log(`API dos Bruxos está no ar em http://localhost:${serverPort}`);
     })
     
+
+

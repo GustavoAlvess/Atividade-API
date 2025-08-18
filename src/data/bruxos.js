@@ -49,9 +49,7 @@ export default [
         patrono: "Lebre",
         especialidade: "Ver criaturas imaginárias (ou não) 👻",
     },
-];
 
-/* export default [
     {
         id: 6,
         nome: "Neville Longbottom",
@@ -102,6 +100,6 @@ export default [
         patrono: "Gato",
         especialidade: "Transfiguração",
     },
-];*/
+];
 
 
