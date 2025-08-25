@@ -123,6 +123,31 @@ app.get("/varinhas", (req, res) => {
   }
 });
 
+app.get("/varinhas/:id", (req, res) => {
+  // Pega o ID da URL
+  const id = parseInt(req.params.id);
+
+  // Busca o bruxo pelo ID
+  const varinha = varinhas.find((b) => b.id === id);
+
+  // Se encontrou, retorna os dados
+  if (varinha) {
+    res.json({
+      success: true,
+      message: `Varinha encontrada! ⚡`,
+      data: varinha,
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      success: false,
+      error: "Varinha não encontrada 😕",
+      message: `Nenhuma varinha com ID ${id} foi encontrada`,
+      codigo: "WIZARD_NOT_FOUND",
+    });
+  }
+});
+
 app.get("/animais", (req, res) => {
   let animal = req.params.amnimal;
   if (animais.length > 0) {
@@ -137,6 +162,33 @@ app.get("/animais", (req, res) => {
   }
 });
 
+app.get("/animais/:id", (req, res) => {
+  // Pega o ID da URL
+  const id = parseInt(req.params.id);
+
+  // Busca o bruxo pelo ID
+  const animal = animais.find((b) => b.id === id);
+
+  // Se encontrou, retorna os dados
+  if (animal) {
+    res.json({
+      success: true,
+      message: `Animal encontrado! ⚡`,
+      data: animal,
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      success: false,
+      error: "Animal não encontrado 😕",
+      message: `Nenhum animal com ID ${id} foi encontrado`,
+      codigo: "WIZARD_NOT_FOUND",
+    });
+  }
+});
+
+
+
 app.get("/porcoes", (req, res) => {
   let porcao = req.params.porcao;
   if (porcoes.length > 0) {
@@ -150,6 +202,32 @@ app.get("/porcoes", (req, res) => {
     });
   }
 });
+
+app.get("/porcoes/:id", (req, res) => {
+  // Pega o ID da URL
+  const id = parseInt(req.params.id);
+
+  // Busca o bruxo pelo ID
+  const porcao = porcoes.find((b) => b.id === id);
+
+  // Se encontrou, retorna os dados
+  if (porcao) {
+    res.json({
+      success: true,
+      message: `Porção encontrada! ⚡`,
+      data: porcao,
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      success: false,
+      error: "Porção não encontrada 😕",
+      message: `Nenhuma porção com ID ${id} foi encontrada`,
+      codigo: "WIZARD_NOT_FOUND",
+    });
+  }
+});
+
 
 app.listen(serverPort, () => {
   console.log(`API dos Bruxos está no ar em http://localhost:${serverPort}`);
