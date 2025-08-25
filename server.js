@@ -1,6 +1,8 @@
 // importtar módulo express
 import express from "express";
-import bruxos from "./src/data/bruxos.js";
+import dados from "./src/data/dados.js";
+
+const {bruxos,casas,varinhas, animais, porcoes} = dados;
 
 // defiir constante para porta do servidos
 const serverPort = 3000;
@@ -89,6 +91,62 @@ app.get("/bruxos/casa/:casa", (req, res) => {
       error: "Casa não encontrada 😕",
       message: `Nenhuma casa com nome ${casa} foi encontrada`,
       codigo: "WIZARD_NOT_FOUND",
+    });
+  }
+});
+
+app.get("/casas", (req, res) => {
+  let casa = req.params.casa;
+  if (casas.length > 0) {
+    res.json({
+      casas
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      message: "Não possui casas 😕"
+    });
+  }
+});
+
+app.get("/varinhas", (req, res) => {
+  let varinha = req.params.varinha;
+  if (varinhas.length > 0) {
+    res.json({
+      varinhas
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      message: "Não possui varinhas 😕"
+    });
+  }
+});
+
+app.get("/animais", (req, res) => {
+  let animal = req.params.amnimal;
+  if (animais.length > 0) {
+    res.json({
+      animais
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      message: "Não possui animais 😕"
+    });
+  }
+});
+
+app.get("/porcoes", (req, res) => {
+  let porcao = req.params.porcao;
+  if (porcoes.length > 0) {
+    res.json({
+      porcoes
+    });
+  } else {
+    // Se não encontrou, retorna erro 404
+    res.status(404).json({
+      message: "Não possui porções 😕"
     });
   }
 });
